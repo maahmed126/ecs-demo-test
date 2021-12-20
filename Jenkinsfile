@@ -1,7 +1,6 @@
 pipeline {
 	triggers {
         upstream(upstreamProjects: 'MasterUpstream',threshold: hudson.model.Result.SUCCESS)//UNSTABLE, FAILURE, NOT_BUILT, ABORTED
-    }	
     }			
   agent {
     label 'ecs'
@@ -14,7 +13,6 @@ pipeline {
       }
     }
   }
-  
   post {
 
 		always {
@@ -25,4 +23,5 @@ pipeline {
 		    // s3CopyArtifact buildSelector: lastSuccessful(), excludeFilter: '', filter: 'test.txt', flatten: false, optional: false, projectName: 'ecs-demo-test', target: '/home/jenkins/workspace/ecs-demo-test'
 		}
   }
-
+}
+}
